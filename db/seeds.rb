@@ -11,7 +11,7 @@ puts "Seeding Users..."
     name = Faker::Name.first_name
     email = Faker::Internet.safe_email(name: "#{name}")
     trades = rand(1..100)
-    rating = rand(1.0..5.0)
+    rating = rand(1.0..5.0).round(1)
     User.create!(name: name, email: email, trades: trades, rating: rating)
 end
 
