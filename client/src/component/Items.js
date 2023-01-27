@@ -1,10 +1,22 @@
 import React from "react";
+import { CardGroup, Container } from "react-bootstrap";
+import ItemCard from "./ItemCard";
 
-function Items(){
+function Items({allItems, setCurrentItem}) {
 
+    const itemCards = allItems.map(item => {
+        return (
+          <ItemCard
+            key={item.id}
+            item={item}
+            setCurrentItem={setCurrentItem}
+          />
+        )
+      })
+      
     return(
-        <div>
-            <h3>This is the Items Page</h3>
+        <div className="row row-cols-md-6  d-flex justify-content-center">
+            {itemCards}
         </div>
     )
 }

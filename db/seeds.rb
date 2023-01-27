@@ -18,22 +18,28 @@ end
 puts "Seeding Categories..."
 Category.create!([
     {
-        name: "Household"
+        name: "Household",
+        image_url: "https://static.thenounproject.com/png/2663849-200.png"
     },
     {
-        name: "Tools/Outdoor Items"
+        name: "Tools/Outdoor Items",
+        image_url: "https://static.thenounproject.com/png/5129925-200.png"
     },
     {
-        name: "Clothing"
+        name: "Clothing",
+        image_url: "https://static.thenounproject.com/png/4489023-200.png"
     },
     {
-        name: "Games/Toys"
+        name: "Games/Toys",
+        image_url: "https://static.thenounproject.com/png/4504766-200.png"
     },
     {
-        name: "Electronics"
+        name: "Electronics",
+        image_url: "https://static.thenounproject.com/png/2667326-200.png"
     },
     {
-        name: "Vehicles/Parts"
+        name: "Vehicles/Parts",
+        image_url: "https://static.thenounproject.com/png/4613445-200.png"
     },
 ])
 

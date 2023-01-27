@@ -8,6 +8,8 @@ import Navigation from "./component/Navigation";
 import Categories from "./component/Categories";
 import Container from 'react-bootstrap/Container';
 import { useState, useEffect } from 'react'
+import ItemCard from "./component/ItemCard"
+import ThisCategory from "./component/ThisCategory";
 
 function App() {
 
@@ -18,35 +20,47 @@ function App() {
   const [allUsers, setAllUsers] = useState([])
 
   useEffect(() => {
-    fetch(`http://localhost:3000/items`)
+    fetch(`/items`)
       .then(res => res.json())
       .then(items => {
         setAllItems(items)
-        setCurrentItem(items[0])
       })
-    fetch(`http://localhost:3000/categories`)
+    fetch(`/categories`)
       .then(res => res.json())
       .then(categories => {
         setAllCategories(categories)
-        setCurrentCategory(categories[0])
       })
-    fetch(`http://localhost:3000/users`)
+    fetch(`/users`)
       .then(res => res.json())
       .then(users => {
         setAllUsers(users)
       })
   }, [])
+  console.log(allCategories)
 
-
+  const itemCards = allItems.map(item => {
+    return (
+      <ItemCard
+        key={item.id}
+        item={item}
+        setCurrentItem={setCurrentItem}
+      />
+    )
+  })
 
   return (
     <Container>
       <Navigation />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/categories" element={<Categories />} />
-        <Route path="/items" element={<Items />} />
+        <Route path="/categories" element={<Categories allCategories={allCategories} setCurrentCategory={setCurrentCategory} currentCategory={currentCategory}/>} />
+        <Route path="/items" element={<Items allItems={allItems} setCurrentItem={setCurrentItem}/>} />
         <Route path="/account" element={<Account />} />
+        <Route path="/categories/:id" element={
+          <div className="d-flex justify-content-center">
+            <ThisCategory currentCategory={currentCategory}/>
+          </div>    
+        }/>
       </Routes>
     </Container>
   );
