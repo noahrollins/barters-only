@@ -5,7 +5,7 @@ class UsersController < ApplicationController
     end
 
     def show
-        render json: user, serializer: UsersWithItemsSerializer , status: 200
+        render json: user, include: ['items'], serializer: UsersWithItemsSerializer , status: 200
     end
 
     def create
@@ -34,7 +34,7 @@ class UsersController < ApplicationController
     private
 
     def user
-        User.find(params[:id])
+        User.includes(:categories).find(params[:id])
     end
 
     def user_params

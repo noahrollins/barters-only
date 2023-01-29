@@ -2,23 +2,28 @@ import React from "react";
 import { CardGroup, Container } from "react-bootstrap";
 import ItemCard from "./ItemCard";
 
-function Items({allItems, setCurrentItem}) {
+function Items({ allItems, setCurrentItem, viewUser, setViewUser, darkMode }) {
+  const itemCards = allItems.map((item) => {
+    return (
+      <ItemCard
+        key={item.id}
+        item={item}
+        setCurrentItem={setCurrentItem}
+        setViewUser={setViewUser}
+        darkMode={darkMode}
+        viewUser={viewUser}
+      />
+    );
+  });
 
-    const itemCards = allItems.map(item => {
-        return (
-          <ItemCard
-            key={item.id}
-            item={item}
-            setCurrentItem={setCurrentItem}
-          />
-        )
-      })
-      
-    return(
-        <div className="row row-cols-md-6  d-flex justify-content-center">
-            {itemCards}
-        </div>
-    )
+  return (
+    <div
+      className="row row-cols-md-6 d-flex justify-content-center"
+      style={{ flexDirection: "row", gap: 10 }}
+    >
+      {itemCards}
+    </div>
+  );
 }
 
 export default Items;

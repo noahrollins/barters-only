@@ -5,7 +5,7 @@ class CategoriesController < ApplicationController
     end
 
     def show
-        render json: category, serializer: CategoriesWithItemsSerializer, status: 200
+        render json: category, include: ['items.user'], serializer: CategoriesWithItemsSerializer, status: 200
     end
 
     def create
@@ -20,6 +20,6 @@ class CategoriesController < ApplicationController
     private
 
     def category
-        Category.find(params[:id])
+        Category.joins(items: :user).find(params[:id])
     end
 end
