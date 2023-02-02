@@ -1,5 +1,4 @@
 import React from "react";
-import { CardGroup, Container } from "react-bootstrap";
 import ItemCard from "./ItemCard";
 
 function Items({ allItems, setCurrentItem, viewUser, setViewUser, darkMode }) {

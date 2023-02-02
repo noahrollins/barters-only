@@ -1,5 +1,4 @@
 import React from "react";
-import { CardGroup, Container } from "react-bootstrap";
 import CategoryCard from "./CategoryCard";
 
 function Categories({
@@ -8,7 +7,6 @@ function Categories({
   currentCategory,
   darkMode,
 }) {
-  console.log(allCategories);
   const categoryCards = allCategories.map((category) => {
     return (
       <CategoryCard

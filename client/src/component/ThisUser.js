@@ -4,9 +4,9 @@ import "./ItemCard.css";
 import ItemCard from "./ItemCard";
 
 function ThisUser({ viewUser, setViewUser, darkMode, setCurrentItem }) {
+
   if (viewUser.items) {
     const { name, email, trades, rating, items } = viewUser;
-    console.log(viewUser.items);
     const userItemsCards = viewUser.items.map((item) => {
       return (
         <ItemCard
@@ -18,7 +18,7 @@ function ThisUser({ viewUser, setViewUser, darkMode, setCurrentItem }) {
         />
       );
     });
-    console.log(viewUser);
+
 
     return (
       <>

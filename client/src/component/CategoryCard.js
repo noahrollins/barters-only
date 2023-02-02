@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./ItemCard.css";
 
 function CategoryCard({ category, setCurrentCategory, darkMode }) {
-  const { name, image_url, items } = category;
+  const { name, image_url } = category;
 
   const handleSetCategory = (e) => {
     fetch(`http://localhost:3000/categories/${category.id}`)
@@ -22,7 +22,7 @@ function CategoryCard({ category, setCurrentCategory, darkMode }) {
       <Card.Img
         variant="top"
         className="py-3 card-img"
-        src={category.image_url}
+        src={image_url}
       />
       <Card.Body
         className="text-center"
@@ -30,7 +30,7 @@ function CategoryCard({ category, setCurrentCategory, darkMode }) {
         to={`${category.id}`}
         onClick={handleSetCategory}
       >
-        <Card.Title className="fs-6">{category.name}</Card.Title>
+        <Card.Title className="fs-6">{name}</Card.Title>
       </Card.Body>
     </Card>
   );

@@ -12,7 +12,8 @@ puts "Seeding Users..."
     email = Faker::Internet.safe_email(name: "#{name}")
     trades = rand(1..100)
     rating = rand(1.0..5.0).round(1)
-    User.create!(name: name, email: email, trades: trades, rating: rating)
+    password = Faker::Internet.password(min_length: 4, max_length: 6, mix_case: false)
+    User.create!(name: name, email: email, trades: trades, rating: rating, password: password)
 end
 
 puts "Seeding Categories..."
